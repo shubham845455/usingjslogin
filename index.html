@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+       *{
+        margin: 0 auto;
+        padding: 0;
+       }
+       .log{
+        width: 100%;
+        height: 730px;
+        background: linear-gradient(rgb(255, 111, 0), white,green);
+        text-align: center;
+        
+
+       }
+       ul{
+        width: 260px;
+        padding: 40px;
+        background-color: rgba(0,0,0, 0.3);
+        list-style-type: none;
+        margin-top: 220px;
+        display: inline-block;
+        border-radius: 20px;
+        
+      
+       }
+       ul li{
+        padding: 3px;
+       }
+       ul li input{
+        width: 100%;
+        height: 30px;
+        padding: 8px;
+        box-sizing:border-box ;
+       }
+       ul li p{
+        color: red;
+        font-weight: bolder;
+        float: left;
+        display: none;
+       } 
+       .btn{
+        width: 30%;
+        
+
+       }
+       #pass{
+        width: 80%;
+       
+       }
+       #so{
+        width: 20%;
+        padding: 0px;
+       }
+
+
+       .dropdown {
+  
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+  background-color: red;
+}
+
+.dropdown-content {
+  width: 300px;
+  display: none;
+  height: auto;
+  
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(red, green,blue, 4);
+}
+
+.show {
+  display: block;
+}
+       
+
+
+       
+
+    
+    </style>
+</head>
+
+<body>
+    <div class="log">
+
+        
+    
+        <ul >
+            <li><input type="text" id="user" placeholder="Username"></li>
+            <li><p id="error1">Please enter your Username</p></li>
+            <li><input type="email" id="mail" placeholder="Enter Your Email"></li>
+            <li><p id="error2">Please enter your Email</p></li>
+            <li><input type="password"  id="pass" placeholder="Enter Your Password"><input type="button" value="show" id="so"></li>
+            <li><p id="error3">Please enter your password</p></li>
+            <li><input class="btn" type="button" value="Login" onclick="myform()"></li>
+            
+        </ul>
+
+        
+        <div class="dropdown">
+            <button class="dropbtn" onclick="myFunction()">User-Profile
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="myDropdown">
+              <p>User- shubham kumar</p>
+              <p>Email- shubhamkumar84545556@gmail.com</p>
+              <p>Password- 12345678</p>
+            </div>
+            </div> 
+        
+        </div>
+
+
+        <script>
+
+            var fuser,fmail,fpass,error10,error20;
+            function myform()
+            {
+                fuser = document.getElementById('user');
+                fmail = document.getElementById('mail')
+                fpass = document.getElementById('pass');
+                error10 = document.getElementById('error1')
+                error20 = document.getElementById('error2')
+                error30 = document.getElementById('error3')
+ 
+                if(fuser.value=="")
+                {
+                    error10.style.display="block";
+                }
+                if(fmail.value=="")
+                {
+                    error20.style.display="block";
+                }
+                if(fpass.value=="")
+                error30.style.display="block";
+
+                fuser.addEventListener("input",()=>{
+                    error10.style.display="none";
+                });
+
+                fmail.addEventListener("input",()=>{
+                    error20.style.display="none";
+                });
+                fpass.addEventListener("input",()=>{
+                    error30.style.display="none";
+                    if(fpass.value.length<=6)
+                    {
+                        error30.style.display="block";
+                        error30.innerHTML="Weak Password";
+                    }
+                    else
+                    {
+                        error30.style.display="block";
+                        error30.innerHTML="Normal password";
+                     }
+                     
+                   });
+
+                   if(fuser.value=="shubham kumar" && fmail.value=="shubhamkumar84545556@gmail.com" && fpass.value==12345678)
+                   {
+                    alert("WELCOME SHUBHAM");
+                   window.location="index1.html";
+                   }
+                   else
+                   {
+                    alert("Invalid User")
+                   }
+
+
+                
+
+            }
+            var myinput , mybtn;
+            myinput=document.getElementById('pass');
+            mybtn=document.getElementById('so');
+
+            mybtn.addEventListener("click",()=>{
+                let m = myinput.getAttribute('type');
+                console.log(m);
+                if (m == 'password')
+                {
+                    myinput.setAttribute("type","text");
+                    mybtn.setAttribute("value","hide");
+                }
+                else
+                {
+                    myinput.setAttribute("type","password");
+                    mybtn.setAttribute("value","show");
+                }
+            });
+
+             /* When the user clicks on the button, 
+               toggle between hiding and showing the dropdown content */
+           function myFunction() {
+           document.getElementById("myDropdown").classList.toggle("show");
+           }
+
+//             // Close the dropdown if the user clicks outside of it
+//            window.onclick = function(e) {
+//           if (!e.target.matches('.dropbtn')) {
+//           var myDropdown = document.getElementById("myDropdown");
+//           if (myDropdown.classList.contains('show')) {
+//           myDropdown.classList.remove('show');
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+        </script>
+   
+    
+</body>
+</html>
